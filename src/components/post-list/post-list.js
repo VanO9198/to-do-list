@@ -25,7 +25,6 @@ const PostList = ({posts, onDelete, onToggleLike, onToggleImportant}) => {
     })
 
     return (
-
         <ul className="app-list list-group">
             {elements}
         </ul>

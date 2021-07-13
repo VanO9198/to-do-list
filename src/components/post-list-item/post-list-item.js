@@ -47,5 +47,4 @@ const PostListItem = ({label, onDelete, id, onToggleLike, onToggleImportant, imp
     )    
 }
 
-
 export default PostListItem;

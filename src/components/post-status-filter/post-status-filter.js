@@ -1,20 +1,17 @@
 import React, {Component} from 'react';
-
 import './post-status-filter.css';
 
-class PostStatusFilter extends Component {
+export default class PostStatusFilter extends Component {
     constructor(props) {
         super(props);
         this.buttons = [
             {name: 'all', label: 'Все'},
             {name: 'like', label: 'Понравилось'},
             {name: 'important', label: 'Важные'}
-        ]
-        
+        ]        
     }
     render() {
-        const {filter, onChangeFilter} = this.props
-        
+        const {filter, onChangeFilter} = this.props        
 
         const buttons = this.buttons.map(({name, label}) => {
             const active = filter === name;
@@ -28,14 +25,11 @@ class PostStatusFilter extends Component {
                 >{label}</button>
             )
         })
-
     
         return (
             <div className="btn-group">
                 {buttons}
             </div>
-    )
+        )
     }
 }
-
-export default PostStatusFilter;

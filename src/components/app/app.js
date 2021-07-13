@@ -5,8 +5,7 @@ import PostStatusFilter from '../post-status-filter/post-status-filter';
 import PostList from '../post-list/post-list';
 import PostAddForm from '../post-add-form/post-add-form';
 
-
-class App extends Component {
+export default class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -21,11 +20,7 @@ class App extends Component {
             maxId: 4
         }
     }
-    onChangeFilter = (name) => {
-        this.setState({
-            filter: name
-        });
-    }
+    onChangeFilter = (name) => this.setState({filter: name})
 
     filterPost = (items, filter) => {
         switch (filter) {
@@ -37,8 +32,6 @@ class App extends Component {
                 return items.filter(item => item.important);
             default:
                 return items;
-
-
         }
     }
 
@@ -51,11 +44,8 @@ class App extends Component {
         });
     }
 
-    onSearch = (term) => {
-        this.setState({
-            term
-        })
-    }
+    onSearch = (term) => this.setState({term})
+
     toggleFunc = (id, prop) => {
         const {data} = this.state;
         const index = data.findIndex((elem) => elem.id === id);
@@ -110,13 +100,15 @@ class App extends Component {
         const {data, term, filter} = this.state;
         const allPosts = data.length;
         const liked = data.filter(item => item.like).length;
+        const important = data.filter(item => item.important).length;
         const visiblePosts = this.filterPost(this.searchPost(data, term), filter);
 
         return (
             <div className="app">
                 <AppHeader 
                     postsCount={allPosts}
-                    likedCount={liked}/>
+                    likedCount={liked}
+                    importantCount={important}/>
                 <div className="search-panel d-flex">
                     <SearchPanel
                         onSearch={this.onSearch}/>
@@ -133,8 +125,5 @@ class App extends Component {
                 
             </div>       
         )
-    
     }
 }
-
-export default App; 
